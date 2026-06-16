@@ -62,13 +62,21 @@ function useLondonTime() {
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const time = useLondonTime();
   const navLinks = ["Projects", "Studio", "Journal", "Connect"];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="bg-white text-gray-900">
       {/* ============ HERO ============ */}
-      <section className="relative min-h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "#EFEFEF" }}>
+      <section className="relative min-h-screen flex flex-col overflow-hidden pt-[72px]" style={{ backgroundColor: "#EFEFEF" }}>
         {/* Shader stack */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <Shader style={{ width: "100%", height: "100%" }}>
@@ -80,37 +88,45 @@ function Index() {
         </div>
 
         {/* Nav */}
-        <div className="relative z-20 mx-auto w-full max-w-[1440px] p-2 sm:p-3">
-          <nav className="bg-white rounded-full flex items-center justify-between" style={{ padding: 5 }}>
-            <div className="flex items-center gap-6">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold tracking-tight" style={{ fontSize: 11 }}>AX</span>
+        <div className="fixed top-0 left-0 right-0 z-[100]">
+          <div
+            className={`mx-auto w-full max-w-[1440px] p-2 sm:p-3 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+              scrolled
+                ? "bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md"
+                : "bg-white/80"
+            }`}
+          >
+            <nav className="bg-white rounded-full flex items-center justify-between" style={{ padding: 5 }}>
+              <div className="flex items-center gap-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold tracking-tight" style={{ fontSize: 11 }}>AX</span>
+                </div>
+                <div className="hidden md:flex items-center gap-6">
+                  {navLinks.map((l) => (
+                    <a key={l} href="#" className="text-gray-900 hover:text-gray-500 transition-colors duration-300" style={{ fontSize: 14 }}>{l}</a>
+                  ))}
+                </div>
               </div>
-              <div className="hidden md:flex items-center gap-6">
-                {navLinks.map((l) => (
-                  <a key={l} href="#" className="text-gray-900 hover:text-gray-500 transition-colors duration-300" style={{ fontSize: 14 }}>{l}</a>
-                ))}
-              </div>
-            </div>
 
-            <div className="hidden md:flex items-center gap-4 pr-1">
-              <span className="hidden lg:inline text-gray-600" style={{ fontSize: 13 }}>Taking on projects for Q1 2026</span>
-              <span className="flex items-center gap-1.5 text-gray-600" style={{ fontSize: 13 }}>
-                <Clock size={14} />
-                {time} in London
-              </span>
-              <a href="#" className="group bg-gray-900 text-white rounded-full pl-5 pr-2 py-2 flex items-center gap-3 font-medium" style={{ fontSize: 13 }}>
-                <RollText text="Book a strategy call" />
-                <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-gray-900 group-hover:-rotate-45" style={{ transition: `transform 500ms ${EASE}` }}>
-                  <ArrowRight size={12} />
+              <div className="hidden md:flex items-center gap-4 pr-1">
+                <span className="hidden lg:inline text-gray-600" style={{ fontSize: 13 }}>Taking on projects for Q1 2026</span>
+                <span className="flex items-center gap-1.5 text-gray-600" style={{ fontSize: 13 }}>
+                  <Clock size={14} />
+                  {time} in London
                 </span>
-              </a>
-            </div>
+                <a href="#" className="group bg-gray-900 text-white rounded-full pl-5 pr-2 py-2 flex items-center gap-3 font-medium" style={{ fontSize: 13 }}>
+                  <RollText text="Book a strategy call" />
+                  <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-gray-900 group-hover:-rotate-45" style={{ transition: `transform 500ms ${EASE}` }}>
+                    <ArrowRight size={12} />
+                  </span>
+                </a>
+              </div>
 
-            <button className="md:hidden bg-gray-900 text-white rounded-full p-2.5" onClick={() => setMenuOpen(true)} aria-label="Open menu">
-              <Menu size={18} />
-            </button>
-          </nav>
+              <button className="md:hidden bg-gray-900 text-white rounded-full p-2.5" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+                <Menu size={18} />
+              </button>
+            </nav>
+          </div>
         </div>
 
         {/* Spacer */}
