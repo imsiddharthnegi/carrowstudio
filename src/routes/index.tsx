@@ -95,41 +95,45 @@ function Index() {
             }`}
           >
             <nav
-              className={`flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+              className={`grid grid-cols-3 items-center transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
                 scrolled
                   ? "bg-white rounded-full shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-md mx-0"
                   : "bg-white/95 rounded-2xl mx-2"
               }`}
               style={{ padding: 5 }}
             >
-              <div className="flex items-center gap-6">
+              {/* Left column */}
+              <div className="flex items-center justify-start">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold tracking-tight" style={{ fontSize: 11 }}>AX</span>
                 </div>
-                <div className="hidden md:flex items-center gap-6">
-                  {navLinks.map((l) => (
-                    <a key={l} href="#" className="text-gray-900 hover:text-gray-500 transition-colors duration-300" style={{ fontSize: 14 }}>{l}</a>
-                  ))}
-                </div>
               </div>
 
-              <div className="hidden md:flex items-center gap-4 pr-1">
-                <span className="hidden lg:inline text-gray-600" style={{ fontSize: 13 }}>Taking on projects for Q1 2026</span>
-                <span className="flex items-center gap-1.5 text-gray-600" style={{ fontSize: 13 }}>
-                  <Clock size={14} />
-                  {time} in London
-                </span>
-                <a href="#" className="group bg-gray-900 text-white rounded-full pl-5 pr-2 py-2 flex items-center gap-3 font-medium" style={{ fontSize: 13 }}>
-                  <RollText text="Book a strategy call" />
-                  <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-gray-900 group-hover:-rotate-45" style={{ transition: `transform 500ms ${EASE}` }}>
-                    <ArrowRight size={12} />
+              {/* Center column */}
+              <div className="hidden md:flex items-center justify-center gap-6 sm:gap-8">
+                {navLinks.map((l) => (
+                  <a key={l} href="#" className="text-gray-900 hover:text-gray-500 transition-colors duration-300" style={{ fontSize: 14 }}>{l}</a>
+                ))}
+              </div>
+
+              {/* Right column */}
+              <div className="flex items-center justify-end">
+                <div className="hidden md:flex items-center gap-4 pr-1">
+                  <span className="flex items-center gap-1.5 text-gray-600" style={{ fontSize: 13 }}>
+                    <Clock size={14} />
+                    {time} in London
                   </span>
-                </a>
+                  <a href="#" className="group bg-gray-900 text-white rounded-full pl-5 pr-2 py-2 flex items-center gap-3 font-medium" style={{ fontSize: 13 }}>
+                    <RollText text="Book a strategy call" />
+                    <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-gray-900 group-hover:-rotate-45" style={{ transition: `transform 500ms ${EASE}` }}>
+                      <ArrowRight size={12} />
+                    </span>
+                  </a>
+                </div>
+                <button className="md:hidden bg-gray-900 text-white rounded-full p-2.5" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+                  <Menu size={18} />
+                </button>
               </div>
-
-              <button className="md:hidden bg-gray-900 text-white rounded-full p-2.5" onClick={() => setMenuOpen(true)} aria-label="Open menu">
-                <Menu size={18} />
-              </button>
             </nav>
           </div>
         </div>
