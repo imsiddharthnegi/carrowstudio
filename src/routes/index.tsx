@@ -67,7 +67,7 @@ function Index() {
   const navLinks = ["Projects", "Studio", "Journal", "Connect"];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -90,13 +90,18 @@ function Index() {
         {/* Nav */}
         <div className="fixed top-0 left-0 right-0 z-[100]">
           <div
-            className={`mx-auto w-full max-w-[1440px] p-2 sm:p-3 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-              scrolled
-                ? "bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md"
-                : "bg-white/80"
+            className={`mx-auto w-full max-w-[1440px] transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+              scrolled ? "px-4 sm:px-6 pt-3" : "px-0 pt-0"
             }`}
           >
-            <nav className="bg-white rounded-full flex items-center justify-between" style={{ padding: 5 }}>
+            <nav
+              className={`flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+                scrolled
+                  ? "bg-white rounded-full shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-md mx-0"
+                  : "bg-white/95 rounded-2xl mx-2"
+              }`}
+              style={{ padding: 5 }}
+            >
               <div className="flex items-center gap-6">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold tracking-tight" style={{ fontSize: 11 }}>AX</span>
