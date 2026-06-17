@@ -332,6 +332,98 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* ============ FOOTER ============ */}
+      <footer className="bg-gray-900 pt-16 sm:pt-20 pb-8 sm:pb-10">
+        <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          {/* Top grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 lg:gap-12 mb-12 sm:mb-16">
+            {/* Brand column */}
+            <div>
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="font-bold text-gray-900" style={{ fontSize: 10 }}>AX</span>
+              </div>
+              <p className="text-gray-400 mt-4 max-w-[220px]" style={{ fontSize: 14, lineHeight: 1.65 }}>
+                We build the brands that define the future.
+              </p>
+              <a
+                href="mailto:hello@axion.studio"
+                className="block mt-6 text-[#F26522] hover:text-white transition-colors duration-300"
+                style={{ fontSize: 13 }}
+              >
+                hello@axion.studio
+              </a>
+            </div>
+
+            {/* Navigation column */}
+            <div>
+              <h4 className="font-semibold text-gray-500 tracking-widest uppercase mb-4" style={{ fontSize: 11 }}>
+                Studio
+              </h4>
+              <div className="flex flex-col gap-3">
+                {["Projects", "About", "Journal", "Careers"].map((link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    style={{ fontSize: 14 }}
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Services column */}
+            <div>
+              <h4 className="font-semibold text-gray-500 tracking-widest uppercase mb-4" style={{ fontSize: 11 }}>
+                Services
+              </h4>
+              <div className="flex flex-col gap-3">
+                {["Brand Strategy", "Web Design", "Motion & 3D", "Growth Marketing"].map((link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    style={{ fontSize: 14 }}
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Social column */}
+            <div>
+              <h4 className="font-semibold text-gray-500 tracking-widest uppercase mb-4" style={{ fontSize: 11 }}>
+                Follow
+              </h4>
+              <div className="flex flex-col gap-3">
+                {["Twitter / X", "Instagram", "LinkedIn", "Dribbble"].map((link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    style={{ fontSize: 14 }}
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-gray-600" style={{ fontSize: 13 }}>
+              &copy; 2026 Axion Studio. All rights reserved.
+            </p>
+            <p className="text-gray-600" style={{ fontSize: 13 }}>
+              Crafted with obsession in London.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
