@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Clock, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { Shader, ChromaFlow, FilmGrain, FlutedGlass, Swirl } from "shaders/react";
 
 export const Route = createFileRoute("/")({
@@ -41,29 +41,10 @@ function RollText({ text }: { text: string }) {
   );
 }
 
-function useLondonTime() {
-  const [time, setTime] = useState("");
-  useEffect(() => {
-    const tick = () => {
-      const t = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Europe/London",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      }).format(new Date());
-      setTime(t);
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-  return time;
-}
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const time = useLondonTime();
   const navLinks = ["Projects", "Studio", "Journal", "Connect"];
 
   useEffect(() => {
@@ -118,11 +99,7 @@ function Index() {
 
               {/* Right column */}
               <div className="flex items-center justify-end">
-                <div className="hidden md:flex items-center gap-4 pr-1">
-                  <span className="flex items-center gap-1.5 text-gray-600" style={{ fontSize: 13 }}>
-                    <Clock size={14} />
-                    {time} in London
-                  </span>
+                <div className="hidden md:flex items-center">
                   <a href="#" className="group bg-gray-900 text-white rounded-full pl-5 pr-2 py-2 flex items-center gap-3 font-medium" style={{ fontSize: 13 }}>
                     <RollText text="Book a strategy call" />
                     <span className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-gray-900 group-hover:-rotate-45" style={{ transition: `transform 500ms ${EASE}` }}>
@@ -196,10 +173,7 @@ function Index() {
                 animation: `slideUp 500ms ${EASE} forwards`,
               }}
             >
-              <div className="flex items-center justify-between mb-6">
-                <span className="flex items-center gap-2 text-gray-600 border border-gray-200 rounded-full px-3 py-1.5" style={{ fontSize: 13 }}>
-                  <Clock size={14} /> {time} in London
-                </span>
+              <div className="flex items-center justify-end mb-6">
                 <button onClick={() => setMenuOpen(false)} className="bg-gray-900 text-white rounded-full p-2.5"><X size={18} /></button>
               </div>
               <div className="flex flex-col gap-2 mb-6">
