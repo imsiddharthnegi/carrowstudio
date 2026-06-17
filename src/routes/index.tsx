@@ -290,9 +290,9 @@ function Index() {
       </section>
 
       {/* ============ CTA ============ */}
-      <section className="bg-gray-900 py-24 sm:py-32">
+      <section className="bg-[#F26522] border-t border-b border-[#e05a1a] py-24 sm:py-32">
         <div className="text-center max-w-2xl mx-auto px-5">
-          <p className="text-[#F26522] text-sm font-medium tracking-wide mb-4">Let's work together</p>
+          <p className="text-white/70 text-sm font-medium tracking-wide mb-4">Let's work together</p>
           <h2
             className="font-medium text-white mb-6"
             style={{
@@ -303,20 +303,18 @@ function Index() {
           >
             Ready to dominate your category?
           </h2>
-          <p className="text-gray-400 mb-10" style={{ fontSize: 16, lineHeight: 1.65 }}>
+          <p className="text-white/80 mb-10" style={{ fontSize: 16, lineHeight: 1.65 }}>
             We take on a small number of projects each quarter. If you're serious about growth, let's talk.
           </p>
           <a
             href="#"
-            className="group inline-flex rounded-full pl-5 sm:pl-6 pr-2 py-2 items-center gap-3 text-white font-medium"
-            style={{ backgroundColor: "#F26522", fontSize: 13, transition: `background-color 300ms ${EASE}` }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e05a1a")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#F26522")}
+            className="group inline-flex rounded-full pl-5 sm:pl-6 pr-2 py-2 items-center gap-3 bg-white text-gray-900 font-medium hover:bg-gray-100"
+            style={{ fontSize: 13 }}
           >
             <RollText text="Start a project" />
             <span
-              className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center group-hover:-rotate-45"
-              style={{ color: "#F26522", transition: `transform 500ms ${EASE}` }}
+              className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-900 rounded-full flex items-center justify-center text-white group-hover:-rotate-45"
+              style={{ transition: `transform 500ms ${EASE}` }}
             >
               <ArrowRight size={14} />
             </span>
@@ -324,7 +322,7 @@ function Index() {
           <div className="mt-6">
             <a
               href="mailto:hello@axion.studio"
-              className="text-gray-500 hover:text-white transition-colors duration-300"
+              className="text-white/70 hover:text-white transition-colors duration-300"
               style={{ fontSize: 14 }}
             >
               hello@axion.studio
