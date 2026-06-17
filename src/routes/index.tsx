@@ -288,6 +288,50 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* ============ CTA ============ */}
+      <section className="bg-gray-900 py-24 sm:py-32">
+        <div className="text-center max-w-2xl mx-auto px-5">
+          <p className="text-[#F26522] text-sm font-medium tracking-wide mb-4">Let's work together</p>
+          <h2
+            className="font-medium text-white mb-6"
+            style={{
+              fontSize: "clamp(2rem,5vw,3.8rem)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            Ready to dominate your category?
+          </h2>
+          <p className="text-gray-400 mb-10" style={{ fontSize: 16, lineHeight: 1.65 }}>
+            We take on a small number of projects each quarter. If you're serious about growth, let's talk.
+          </p>
+          <a
+            href="#"
+            className="group inline-flex rounded-full pl-5 sm:pl-6 pr-2 py-2 items-center gap-3 text-white font-medium"
+            style={{ backgroundColor: "#F26522", fontSize: 13, transition: `background-color 300ms ${EASE}` }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#e05a1a")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#F26522")}
+          >
+            <RollText text="Start a project" />
+            <span
+              className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center group-hover:-rotate-45"
+              style={{ color: "#F26522", transition: `transform 500ms ${EASE}` }}
+            >
+              <ArrowRight size={14} />
+            </span>
+          </a>
+          <div className="mt-6">
+            <a
+              href="mailto:hello@axion.studio"
+              className="text-gray-500 hover:text-white transition-colors duration-300"
+              style={{ fontSize: 14 }}
+            >
+              hello@axion.studio
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
